@@ -22,3 +22,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware("cors")->get('/meals',function (){
    return Meal::all();
 });
+
+Route::middleware("cors")->get('/meals/random',function (){
+    $meals = Meal::all();
+    $randomMeal= $meals[rand(0,count($meals)-1)];
+
+    return $randomMeal;
+});
